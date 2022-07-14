@@ -1,0 +1,11 @@
+  {
+    "bindings": [
+      {
+        "name": "exporterTimerTrigger",
+        "type": "timerTrigger",
+        "direction": "in",
+        "schedule": "%EXPORTER_CRON_TIMER%"
+      }
+    ],
+    "scriptFile": "../dist/exporter/index.js"
+  }

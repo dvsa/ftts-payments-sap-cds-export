@@ -1,0 +1,71 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+  <entity name="ftts_financetransaction">
+    <attribute name="ftts_financetransactionid" />
+    <attribute name="ftts_recogniseddate" />
+    <attribute name="ftts_posteddate" />
+    <attribute name="ftts_type" />
+    <attribute name="ftts_status" />
+    <attribute name="ftts_invoiceid" />
+    <attribute name="createdon" />
+    <filter type="and">
+      <condition attribute="ftts_type" operator="in">
+        <value>${TYPE_BOOKING}</value>
+        <value>${TYPE_PFA_BOOKING}</value>
+      </condition>
+      <condition attribute="ftts_posteddate" operator="on" value="${DATE}" />
+      <condition attribute="ftts_amount" operator="neq" value="0" />
+      <condition attribute="ftts_status" operator="neq" value="${STATUS_DUPLICATE}" />
+    </filter>
+    <link-entity name="ftts_payment" from="ftts_paymentid" to="ftts_payment" visible="false" link-type="outer" alias="payment">
+      <attribute name="ftts_reference" />
+      <attribute name="ftts_scheme" />
+      <attribute name="ftts_origin" />
+      <link-entity name="contact" from="contactid" to="ftts_person" visible="false" link-type="outer" alias="payment.person">
+        <attribute name="ftts_name" />
+        <attribute name="ftts_personreference" />
+        <attribute name="address1_line1" />
+        <attribute name="address1_line2" />
+        <attribute name="address1_line3" />
+        <attribute name="address1_city" />
+        <attribute name="address1_postalcode" />
+      </link-entity>
+    </link-entity>
+    <link-entity name="ftts_bookingproduct" from="ftts_bookingproductid" to="ftts_bookingproduct" visible="false" link-type="outer" alias="bookingproduct">
+      <attribute name="ftts_reference" />
+      <attribute name="ftts_testdate" />
+      <attribute name="ftts_price" />
+      <link-entity name="product" from="productid" to="ftts_productid" visible="false" link-type="outer" alias="bookingproduct.product">
+        <attribute name="name" />
+      </link-entity>
+      <link-entity name="account" from="accountid" to="ftts_ihttcid" visible="false" link-type="outer" alias="bookingproduct.account">
+        <attribute name="ftts_remit" />
+        <link-entity name="account" from="accountid" to="parentaccountid" visible="false" link-type="outer" alias="bookingproduct.account.parentaccount">
+          <attribute name="ftts_regiona" />
+          <attribute name="ftts_regionb" />
+          <attribute name="ftts_regionc" />
+        </link-entity>
+      </link-entity>
+      <link-entity name="ftts_booking" from="ftts_bookingid" to="ftts_bookingid" link-type="outer" alias="booking">
+        <link-entity name="account" from="accountid" to="ftts_ihttcid" link-type="outer" alias="booking.account">
+          <attribute name="name" />
+          <attribute name="address1_line1" />
+          <attribute name="address1_line2" />
+          <attribute name="address1_line3" />
+          <attribute name="address1_city" />
+          <attribute name="address1_postalcode" />
+          <attribute name="ftts_tarsbusinessid" />
+        </link-entity>
+      </link-entity>
+    </link-entity>
+    <link-entity name="account" from="accountid" to="ftts_organisation" visible="false" link-type="outer" alias="account">
+      <attribute name="name" />
+      <attribute name="ftts_siteid" />
+      <attribute name="address1_line1" />
+      <attribute name="address1_line2" />
+      <attribute name="address1_line3" />
+      <attribute name="address1_city" />
+      <attribute name="address1_postalcode" />
+      <attribute name="ftts_tarsbusinessid" />
+    </link-entity>
+  </entity>
+</fetch>
