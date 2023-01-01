@@ -1,0 +1,31 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureFunctionsJobHost__logging__logLevel__Default": "Trace",
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "mock-key",
+    "APP_NAME": "ftts-payments-sap-cds-export",
+    "AZURE_BLOB_CONTAINER_NAME": "",
+    "AZURE_TENANT_ID": "",
+    "AzureWebJobsSecretStorageType": "files",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobs.V1_Exporter.Disabled": "true",
+    "DISABLE_EGRESS_FILTERING": false,
+    "EGRESS_CUSTOM_ALLOWED_ADDRESSES": "[]",
+    "EXPORTER_CRON_TIMER": "0 0 2 * * *",
+    "FUNCTIONS_EXTENSION_VERSION": "~4",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "LOG_LEVEL": "debug",
+    "NODE_ENV": "development",
+    "ROLES_VALIDATION": "true",
+    "SAP_CDS_CLIENT_ID": "",
+    "SAP_CDS_CLIENT_SECRET": "",
+    "CRM_SCOPE": "",
+    "SAP_INTEGRATION_FILE_STORAGE": "",
+    "SAPEXP_CDS_RESOURCE_URL": "",
+    "SAPEXP_CDS_TOKEN_URL": "",
+    "WEBSITE_NODE_DEFAULT_VERSION":"~16",
+    "WEBSITE_TIME_ZONE": "GMT Standard Time",
+    "SAPEXP_ORIG_BOOKING_MAX_NESTING": 5,
+    "SAPEXP_ORIG_BOOKING_MAX_ITERATIONS_NUMBER": 5
+  }
+}
